@@ -1,10 +1,12 @@
 import React from "react";
-import useCanvas from "../hooks/useCanvas";
 
-const Canvas = (props) => {
-  const { draw, ...rest } = props;
-  const canvasRef = useCanvas(draw);
-
+const Canvas = ({
+  onMouseDown,
+  onMouseMove,
+  onMouseUp,
+  onMouseOut,
+  ...rest
+}) => {
   return (
     <canvas
       style={{
@@ -16,9 +18,13 @@ const Canvas = (props) => {
         top: 0,
         left: 0,
       }}
-      ref={canvasRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseOut={onMouseOut}
       {...rest}
     />
   );
 };
+
 export default Canvas;
